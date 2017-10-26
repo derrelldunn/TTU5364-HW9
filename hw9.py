@@ -3,21 +3,30 @@
 from datetime import datetime
 from datetime import timedelta
 
-def search_list(L, value):
+def search_list(dict_list, value):
     # Brute force search for 'value' in the list 'L'
     # by examining entries one at a time until it's found
     # or the list has been exhausted.
-    pass
+    for index in range(len(dict_list)):
+        if dict_list[index] == value:
+            found_index = index
+            break
+    else:
+        found_index = -1
 
-def bsearch_list(List, value):
+    return found_index
+
+
+def bsearch_list(dict_list, value):
     # Search for 'value' in the sorted list 'L' using a binary
     # search. COMPLETE the code that's here; 
     # DO NOT just ignore or delete or change this code, but actually complete
     # it as outlined in the presentation. 
-    L = 0
-    U = len(List)-1
-    while (L<=U): 
-      pass
+    lower_bound = 0
+    upper_bound = len(dict_list)-1
+    while lower_bound<=upper_bound:
+        break
+    pass
 
 
 ###################################################
