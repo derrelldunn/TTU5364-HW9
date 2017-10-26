@@ -24,9 +24,20 @@ def bsearch_list(dict_list, value):
     # it as outlined in the presentation. 
     lower_bound = 0
     upper_bound = len(dict_list)-1
+
+   # pivot_point = (lower_bound + upper_bound)/2
     while lower_bound<=upper_bound:
-        break
-    pass
+        pivot_point = (lower_bound+upper_bound)/2
+        if dict_list[pivot_point] < value:
+            lower_bound = pivot_point
+            continue
+        elif dict_list[pivot_point] > value:
+             upper_bound = pivot_point
+             continue
+        elif dict_list[pivot_point] == value:
+            return pivot_point
+            break
+    return
 
 
 ###################################################
@@ -74,6 +85,7 @@ stop = datetime.now()
 duration = stop-start
 if ((index >=0) and (index < len(L)) and (L[index]==val)):
     print "Binary search found it in %f seconds."%(duration.total_seconds())
+    print 'really found it!! {}'.format(L[index])
 else:
     print "Binary search did not find %s in the list (took %f seconds)."%(val, duration.total_seconds())
 
