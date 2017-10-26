@@ -25,7 +25,7 @@ def bsearch_list(dict_list, value):
     lower_bound = 0
     upper_bound = len(dict_list)-1
 
-   # pivot_point = (lower_bound + upper_bound)/2
+
     while lower_bound<=upper_bound:
         pivot_point = (lower_bound+upper_bound)/2
         if dict_list[pivot_point] < value:
