@@ -1,5 +1,6 @@
 # hw9-Dunn.py
 # Derrell Dunn
+import time
 from datetime import datetime
 from datetime import timedelta
 
@@ -24,9 +25,7 @@ def bsearch_list(dict_list, value):
     # it as outlined in the presentation. 
     lower_bound = 0
     upper_bound = len(dict_list)-1
-
-
-    while lower_bound<=upper_bound:
+    while lower_bound<=upper_bound and (abs(lower_bound - upper_bound)>1):
         pivot_point = (lower_bound+upper_bound)/2
         if dict_list[pivot_point] < value:
             lower_bound = pivot_point
@@ -37,7 +36,7 @@ def bsearch_list(dict_list, value):
         elif dict_list[pivot_point] == value:
             return pivot_point
             break
-    return
+    return -1
 
 
 ###################################################
@@ -74,7 +73,7 @@ duration = stop-start
 if ((index >=0) and (index < len(L)) and (L[index]==val)):
     print "Brute force search found it in %f seconds."%(duration.total_seconds())
 else:
-    print "Brute force search did not find %s in the list (took %f seconds)."%(val, duration.total_seconds())
+    print "!!!Brute force search did NOT find %s in the list (took %f seconds)!!!"%(val, duration.total_seconds())
 
 ##################################
 ##### Time the binary search #####
@@ -84,9 +83,10 @@ index = bsearch_list(L, val)
 stop = datetime.now()
 duration = stop-start
 if ((index >=0) and (index < len(L)) and (L[index]==val)):
-    print "Binary search found it in %f seconds."%(duration.total_seconds())
-    print 'really found it!! {}'.format(L[index])
+    print 'Binary search found it in %1.20f seconds.' % (duration.total_seconds())
+    print 'Found it!! {} at index {}'.format(L[index], index)
 else:
-    print "Binary search did not find %s in the list (took %f seconds)."%(val, duration.total_seconds())
+    print '!!!Binary search did NOT find %s in the list (took %1.10f seconds)!!!' % (val, duration.total_seconds())
+    print '!!!NOT found return value is {}!!!'.format(index)
 
 
