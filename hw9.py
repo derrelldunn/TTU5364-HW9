@@ -1,6 +1,6 @@
 # hw9-Dunn.py
 # Derrell Dunn
-import time
+
 from datetime import datetime
 from datetime import timedelta
 
@@ -25,7 +25,7 @@ def bsearch_list(dict_list, value):
     # it as outlined in the presentation. 
     lower_bound = 0
     upper_bound = len(dict_list)-1
-    while lower_bound<=upper_bound and (abs(lower_bound - upper_bound)>=1):
+    while lower_bound <= upper_bound and (abs(lower_bound - upper_bound) >= 1):
         pivot_point = (lower_bound+upper_bound)/2
         if (dict_list[pivot_point] < value) and (abs(lower_bound - upper_bound) > 1):
             lower_bound = pivot_point
@@ -86,6 +86,7 @@ else:
 ##################################
 ##### Time the binary search #####
 ##################################
+
 start = datetime.now()
 index = bsearch_list(L, val)
 stop = datetime.now()
