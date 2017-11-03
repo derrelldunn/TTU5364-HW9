@@ -25,17 +25,24 @@ def bsearch_list(dict_list, value):
     # it as outlined in the presentation. 
     lower_bound = 0
     upper_bound = len(dict_list)-1
-    while lower_bound<=upper_bound and (abs(lower_bound - upper_bound)>1):
+    while lower_bound<=upper_bound and (abs(lower_bound - upper_bound)>=1):
         pivot_point = (lower_bound+upper_bound)/2
-        if dict_list[pivot_point] < value:
+        if (dict_list[pivot_point] < value) and (abs(lower_bound - upper_bound) > 1):
             lower_bound = pivot_point
             continue
-        elif dict_list[pivot_point] > value:
+        elif dict_list[pivot_point] > value and (abs(lower_bound - upper_bound) > 1):
              upper_bound = pivot_point
              continue
-        elif dict_list[pivot_point] == value:
+        elif (dict_list[pivot_point] == value):
             return pivot_point
             break
+        elif  (dict_list[pivot_point+1] == value):
+            return pivot_point + 1
+            break
+        else:
+            return -1
+            break
+
     return -1
 
 
@@ -75,6 +82,7 @@ if ((index >=0) and (index < len(L)) and (L[index]==val)):
 else:
     print "!!!Brute force search did NOT find %s in the list (took %f seconds)!!!"%(val, duration.total_seconds())
 
+
 ##################################
 ##### Time the binary search #####
 ##################################
@@ -82,11 +90,11 @@ start = datetime.now()
 index = bsearch_list(L, val)
 stop = datetime.now()
 duration = stop-start
-if ((index >=0) and (index < len(L)) and (L[index]==val)):
+if ((index >= 0) and (index < len(L)) and (L[index] == val)):
     print 'Binary search found it in %1.20f seconds.' % (duration.total_seconds())
     print 'Found it!! {} at index {}'.format(L[index], index)
 else:
-    print '!!!Binary search did NOT find %s in the list (took %1.10f seconds)!!!' % (val, duration.total_seconds())
-    print '!!!NOT found return value is {}!!!'.format(index)
+    print '!!!Binary search did NOT find %s in the list (took %f seconds)!!!' % (val, duration.total_seconds())
+
 
 
